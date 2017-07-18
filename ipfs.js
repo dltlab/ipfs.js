@@ -1,7 +1,7 @@
 var ipfsApi;
 
 try {
-  ipfsApi  = require('ipfs-api/dist/ipfsapi.min.js');
+  ipfsApi  = require('ipfs-api');
 } catch(e) {}
 
 var base58   = require('bitcore/lib/encoding/base58.js');
@@ -48,7 +48,7 @@ ipfs.add = function(input, callback) {
 
   ipfs.api.add(buf, function (err, ret) {
     if (err) callback(err, null);
-    else callback(null, ret[0] ? ret[0].Hash : ret.Hash);
+    else callback(null, ret[0] ? ret[0].hash : ret.hash);
   });
 };
 
